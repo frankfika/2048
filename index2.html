@@ -6,7 +6,7 @@
     <title>Telegram Web App</title>
 </head>
 <body>
-    <h1>Telegram Web App</h1>
+    <h1 id="greeting">Hello, User!</h1>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -16,12 +16,16 @@
         // Get the user object
         const user = Telegram.WebApp.initDataUnsafe.user;
 
-        // Display user information in an alert dialog
+        // Display user information
+        const greetingElement = document.getElementById('greeting');
         if (user) {
-            alert(`Hello, ${user.first_name} ${user.last_name || ''}!\nYour username is @${user.username} and your ID is ${user.id}.`);
+            greetingElement.innerText = `Hello, ${user.first_name} ${user.last_name || ''}! Your username is @${user.username} and your ID is ${user.id}.`;
         } else {
-            alert('Hello, User!');
+            greetingElement.innerText = 'Hello, User!';
         }
+
+        // Optionally, log the user object to the console
+        console.log(user);
     </script>
 </body>
 </html>
